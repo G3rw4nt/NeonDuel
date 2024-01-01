@@ -31,25 +31,29 @@ public class Player : MonoBehaviour
     void Update()
     {
         // Check for key presses
-        if (Input.GetKeyDown(upKey))
+        if (Input.GetKeyDown(upKey) && lastClickedKey != KeyCode.DownArrow)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
             spawnWall();
+            lastClickedKey = upKey;
         }
-        else if (Input.GetKeyDown(downKey))
+        else if (Input.GetKeyDown(downKey) && lastClickedKey != KeyCode.UpArrow)
         {
             GetComponent<Rigidbody2D>().velocity = -Vector2.up * speed;
             spawnWall();
+            lastClickedKey = downKey;
         }
-        else if (Input.GetKeyDown(rightKey))
+        else if (Input.GetKeyDown(rightKey) && lastClickedKey != KeyCode.LeftArrow)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
             spawnWall();
+            lastClickedKey = rightKey;
         }
-        else if (Input.GetKeyDown(leftKey))
+        else if (Input.GetKeyDown(leftKey) && lastClickedKey != KeyCode.RightArrow)
         {
             GetComponent<Rigidbody2D>().velocity = -Vector2.right * speed;
             spawnWall();
+            lastClickedKey = leftKey;
         }
 
         fitColliderBetween(wall, lastWallEnd, transform.position);
