@@ -160,7 +160,9 @@ MonoBehaviour:
   rightKey: 100
   leftKey: 97
   speed: 16
-  wallPrefab: {fileID: 0}
+  wallPrefab: {fileID: 2565704053501011039, guid: 8a173a3e69ed24ad09646e236e9a7194, type: 3}
+  rotationSpeed: 5
+  isPlayer1: 0
 --- !u!50 &310739442
 Rigidbody2D:
   serializedVersion: 4
@@ -293,13 +295,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310739440}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &368566340
 GameObject:
   m_ObjectHideFlags: 0
@@ -581,7 +583,9 @@ MonoBehaviour:
   rightKey: 275
   leftKey: 276
   speed: 16
-  wallPrefab: {fileID: 0}
+  wallPrefab: {fileID: 1040697730182032500, guid: 649bec7a1d8b34e2a9d13ad92d5f8162, type: 3}
+  rotationSpeed: 5
+  isPlayer1: 1
 --- !u!50 &1821533674
 Rigidbody2D:
   serializedVersion: 4
@@ -714,13 +718,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821533672}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 6, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!1 &1879289313
 GameObject:
   m_ObjectHideFlags: 0
