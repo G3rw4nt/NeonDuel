@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameCore.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Player1WinScreen.unity
+    guid: 5935d2df9e40b4377b8d66d689105738
+  - enabled: 1
+    path: Assets/Scenes/Player2WinScreen.unity
+    guid: 589abe25eec41463fb19926e064d4137
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 94687f7e897ae448e9ef3418a5aeb9d0
   m_configObjects: {}

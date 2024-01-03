@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -110,6 +111,14 @@ public class Player : MonoBehaviour
         {
             print("Player lost: " + name);
             Destroy(gameObject);
+            if(name == "player_cyan")
+            {
+                SceneManager.LoadScene("Player2WinScreen", LoadSceneMode.Single);
+            }
+            else
+            {
+                SceneManager.LoadScene("Player1WinScreen", LoadSceneMode.Single);
+            }
         }
     }
 }
