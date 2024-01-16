@@ -7,9 +7,13 @@ public class ButtonManager : MonoBehaviour
 {
     public void StartGame()
     {
-        SceneManager.LoadScene("GameCore", LoadSceneMode.Single);
+        SceneManager.LoadScene("GameCoreVsPlayer", LoadSceneMode.Single);
     }
 
+    public void StartCPUGame()
+    {
+        SceneManager.LoadScene("GameCoreVsCPU", LoadSceneMode.Single);
+    }
     public void ReturnToMainMenu()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);

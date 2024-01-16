@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player 1 Wins
+  m_text: You lost!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: deeabc8371db54dcca93775a33f0fb68, type: 2}
   m_sharedMaterial: {fileID: 7052916655122739776, guid: deeabc8371db54dcca93775a33f0fb68, type: 2}
@@ -323,14 +323,14 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967130
-  m_fontColor: {r: 0.3529412, g: 1, b: 1, a: 1}
+    rgba: 4288807167
+  m_fontColor: {r: 1, g: 0, b: 0.63529414, a: 1}
   m_enableVertexGradient: 0
-  m_colorMode: 0
+  m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 1, g: 0, b: 0.63529414, a: 1}
+    topLeft: {r: 0.3529412, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 0, b: 0.63529414, a: 1}
-    bottomLeft: {r: 1, g: 0, b: 0.63529414, a: 1}
+    bottomLeft: {r: 0.3529412, g: 1, b: 1, a: 1}
     bottomRight: {r: 1, g: 0, b: 0.63529414, a: 1}
   m_fontColorGradientPreset: {fileID: 0}
   m_spriteAsset: {fileID: 0}
@@ -341,7 +341,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 267.8
+  m_fontSize: 380
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

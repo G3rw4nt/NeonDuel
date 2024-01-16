@@ -1,15 +1,16 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Player : MonoBehaviour
+public class AI : MonoBehaviour
 {
-    //Movement keys
-    public KeyCode upKey;
-    public KeyCode downKey;
-    public KeyCode rightKey;
-    public KeyCode leftKey;
+    enum Directions
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
 
-    KeyCode lastClickedKey;
+    Directions lastDirection;
 
     public float speed = 16f;
 
@@ -25,57 +26,76 @@ public class Player : MonoBehaviour
 
     public bool isPlayer1;
 
+    private float timeSinceLastDirectionChange;
+    private float timeBetweenDirectionChanges;
+
+    int newDirectionNumber;
+    int lastDirectionNumber;
+
     // Start is called before the first frame update
     void Start()
     {
+        timeSinceLastDirectionChange = 0f;
+        SetRandomTimeBetweenDirectionChanges();
         GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
-        lastClickedKey = upKey;
+        lastDirection = Directions.Up;
         spawnWall();
+        lastDirectionNumber = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Check for key presses
-        if (Input.GetKeyDown(upKey) && (lastClickedKey != KeyCode.DownArrow && lastClickedKey != KeyCode.S))
+        timeSinceLastDirectionChange += Time.deltaTime;
+        if (timeSinceLastDirectionChange >= timeBetweenDirectionChanges)
         {
-            GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
-            spawnWall();
-            lastClickedKey = upKey;
-            rotateMotorcycle();
-        }
-        else if (Input.GetKeyDown(downKey) && (lastClickedKey != KeyCode.UpArrow && lastClickedKey != KeyCode.W))
-        {
-            GetComponent<Rigidbody2D>().velocity = -Vector2.up * speed;
-            spawnWall();
-            lastClickedKey = downKey;
-            rotateMotorcycle();
-        }
-        else if (Input.GetKeyDown(rightKey) && (lastClickedKey != KeyCode.LeftArrow && lastClickedKey != KeyCode.A))
-        {
-            GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
-            spawnWall();
-            lastClickedKey = rightKey;
-            rotateMotorcycle();
-        }
-        else if (Input.GetKeyDown(leftKey) && (lastClickedKey != KeyCode.RightArrow && lastClickedKey != KeyCode.D))
-        {
-            GetComponent<Rigidbody2D>().velocity = -Vector2.right * speed;
-            spawnWall();
-            lastClickedKey = leftKey;
-            rotateMotorcycle();
+            newDirectionNumber = Random.Range(1, 4);
+            timeSinceLastDirectionChange = 0f;
+            SetRandomTimeBetweenDirectionChanges();
+            Debug.Log(newDirectionNumber);
+            Debug.Log(timeBetweenDirectionChanges);
         }
 
-        fitColliderBetween(wall, lastWallEnd, transform.position);
+        if(newDirectionNumber != lastDirectionNumber)
+        {
+            lastDirectionNumber = newDirectionNumber;
+            if (newDirectionNumber == 1 && lastDirection != Directions.Down)
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.up * speed;
+                spawnWall();
+                lastDirection = Directions.Up;
+                rotateMotorcycle();
+            }
+            else if (newDirectionNumber == 2 && lastDirection != Directions.Up)
+            {
+                GetComponent<Rigidbody2D>().velocity = -Vector2.up * speed;
+                spawnWall();
+                lastDirection = Directions.Down;
+                rotateMotorcycle();
+            }
+            else if (newDirectionNumber == 3 && lastDirection != Directions.Left)
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector2.right * speed;
+                spawnWall();
+                lastDirection = Directions.Right;
+                rotateMotorcycle();
+            }
+            else if (newDirectionNumber == 4 && lastDirection != Directions.Right)
+            {
+                GetComponent<Rigidbody2D>().velocity = -Vector2.right * speed;
+                spawnWall();
+                lastDirection = Directions.Left;
+                rotateMotorcycle();
+            }
+        }
 
+        FitColliderBetween(wall, lastWallEnd, transform.position);
     }
 
     void spawnWall()
     {
-        // Save last wall's position
         lastWallEnd = transform.position;
 
-        // Spawn a new Lightwall
         GameObject g = Instantiate(wallPrefab, transform.position, Quaternion.identity);
         wall = g.GetComponent<Collider2D>();
 
@@ -125,12 +145,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    void fitColliderBetween(Collider2D co, Vector2 a, Vector2 b)
+    void FitColliderBetween(Collider2D co, Vector2 a, Vector2 b)
     {
-        // Calculate the Center Position
         co.transform.position = a + (b - a) * 0.5f;
 
-        // Scale it (horizontally or vertically)
         float dist = Vector2.Distance(a, b);
         if (a.x != b.x)
             co.transform.localScale = new Vector2(dist + 1, 1);
@@ -140,19 +158,16 @@ public class Player : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D co)
     {
-        // Not the current wall?
         if (co != wall)
         {
             Destroy(gameObject);
             print("Player lost: " + name);
-            //if (name == "player_cyan")
-            //{
-            //    SceneManager.LoadScene("Player2WinScreen", LoadSceneMode.Single);
-            //}
-            //else
-            //{
-            //    SceneManager.LoadScene("Player1WinScreen", LoadSceneMode.Single);
-            //}
         }
     }
+
+    void SetRandomTimeBetweenDirectionChanges()
+    {
+        timeBetweenDirectionChanges = Random.Range(0.25f, 0.75f);
+    }
+
 }

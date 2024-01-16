@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 179243439}
   - component: {fileID: 179243438}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Player2Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,7 +334,7 @@ GameObject:
   - component: {fileID: 227333282}
   - component: {fileID: 227333281}
   m_Layer: 5
-  m_Name: Text (TMP) (1)
+  m_Name: Player1Points
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1116,6 +1116,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCyanPrefab: {fileID: 13861243964019031, guid: 6f65b7efbca6249b39f8865fac4f3bd9, type: 3}
   playerMagentaPrefab: {fileID: 6172778608308969438, guid: 2054e3680d11b44318ad23e6b1383f1e, type: 3}
+  pressKeyText: {fileID: 1509776857}
+  cyanPointsText: {fileID: 227333281}
+  magentaPointsText: {fileID: 179243438}
 --- !u!1 &1251448354
 GameObject:
   m_ObjectHideFlags: 0
