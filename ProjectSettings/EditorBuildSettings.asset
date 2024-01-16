@@ -17,4 +17,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 94687f7e897ae448e9ef3418a5aeb9d0
+  - enabled: 1
+    path: Assets/Scenes/GameCoreVsCPU.unity
+    guid: e3ed22754e7b4496188f70599bb6bd14
+  - enabled: 1
+    path: Assets/Scenes/YouLostScreen.unity
+    guid: 9f5369b603e4f4979a8b9570f98cd8ed
+  - enabled: 1
+    path: Assets/Scenes/YouWinScreen.unity
+    guid: c1bffe5c5a9aa463ebd0130f32901fe1
   m_configObjects: {}
