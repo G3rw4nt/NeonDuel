@@ -16,10 +16,8 @@ public class AI : MonoBehaviour
 
     public GameObject wallPrefab;
 
-    // Current Wall
     Collider2D wall;
 
-    // Last Wall's End
     Vector2 lastWallEnd;
 
     public float rotationSpeed = 5.0f;
@@ -32,7 +30,6 @@ public class AI : MonoBehaviour
     int newDirectionNumber;
     int lastDirectionNumber;
 
-    // Start is called before the first frame update
     void Start()
     {
         timeSinceLastDirectionChange = 0f;
@@ -43,7 +40,6 @@ public class AI : MonoBehaviour
         lastDirectionNumber = 0;
     }
 
-    // Update is called once per frame
     void Update()
     {
         timeSinceLastDirectionChange += Time.deltaTime;
@@ -52,8 +48,6 @@ public class AI : MonoBehaviour
             newDirectionNumber = Random.Range(1, 4);
             timeSinceLastDirectionChange = 0f;
             SetRandomTimeBetweenDirectionChanges();
-            Debug.Log(newDirectionNumber);
-            Debug.Log(timeBetweenDirectionChanges);
         }
 
         if(newDirectionNumber != lastDirectionNumber)
@@ -103,21 +97,17 @@ public class AI : MonoBehaviour
 
     void rotateMotorcycle()
     {
-        // Pobierz aktualną prędkość obiektu
         Vector3 velocity = GetComponent<Rigidbody2D>().velocity;
 
         if (velocity != Vector3.zero)
         {
-            // Ustal kierunek ruchu na podstawie prędkości
             Vector3 direction = velocity.normalized;
 
-            // Ustalenie kierunku ruchu (up, down, right, left)
             Vector3 upDirection = Vector3.up;
             Vector3 downDirection = Vector3.down;
             Vector3 rightDirection = Vector3.right;
             Vector3 leftDirection = Vector3.left;
 
-            // Wybór najbliższego kierunku
             Vector3 closestDirection = Vector3.zero;
             float angleUp = Vector3.Angle(direction, upDirection);
             float angleDown = Vector3.Angle(direction, downDirection);
@@ -135,10 +125,8 @@ public class AI : MonoBehaviour
             else
                 closestDirection = leftDirection;
 
-            // Ograniczenie obrotu do zakresu od -90 do 90 stopni
             float angle = Mathf.Atan2(closestDirection.y, closestDirection.x) * Mathf.Rad2Deg;
 
-            // Ograniczenie obrotu do kroków 90 stopni
             angle = Mathf.Round(angle / 90.0f) * 90.0f;
 
             transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
@@ -161,7 +149,6 @@ public class AI : MonoBehaviour
         if (co != wall)
         {
             Destroy(gameObject);
-            print("Player lost: " + name);
         }
     }
 
